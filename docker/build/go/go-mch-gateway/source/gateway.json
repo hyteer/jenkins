@@ -1,0 +1,48 @@
+{
+  "merchant_redis" : {
+     "hostname" : "10.100.100.70",
+     "port" : 7800,
+     "pwd" : ""
+  },
+  "consul" : {
+     "addr" : "consul:8500"
+  },
+  "cors" : {
+     "allowedorigins" : [ "*" ],
+     "cookiedomain" : ".testopt.snsshop.net"
+  },
+  "redis" : {
+     "hostname" : "10.100.100.70",
+     "port" : 7700,
+     "pwd" : ""
+  },
+  "svr_list" : [ 0 ],
+  "tls" : {
+     "cert_file" : "mycert.cert",
+     "enable" : false,
+     "key_file" : "mykey.key"
+  },
+  "url" : {
+     "h5_url" : "http://pay.testmopt.snsshop.net",
+  },
+  "zipkin_kafka" : {
+     "addr" : "10.100.100.112:9092"
+  },
+  "upload_dir" : {
+   "product_img" : "/tmp",
+   "shop_logo" : "/tmp",
+  },
+  "nextcdn" : {
+   "url_prefix" : "http://testupload.vikduo.com"
+  },
+  "base_boss" : {
+   "url_prefix" : "http://testboss4-base.snsshop.net"
+ },
+  "user_login":{
+  "auto_login_days": 3
+  },
+  "docker":{
+    "enable" :1
+  }
+}
+

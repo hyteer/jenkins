@@ -1,0 +1,75 @@
+filebeat.prospectors:
+
+- input_type: log
+  paths:
+    - /data/www/service-base/runtime/logs/error/*
+    - /data/www/service-base/runtime/logs/info/*
+    - /data/www/service-merchant/runtime/logs/error/*
+    - /data/www/service-merchant/runtime/logs/info/*
+    - /data/www/service-message/runtime/logs/error/*
+    - /data/www/service-message/runtime/logs/info/*
+    - /data/www/service-shop/runtime/logs/error/*
+    - /data/www/service-shop/runtime/logs/info/*
+    - /data/www/service-order/runtime/logs/error/*
+    - /data/www/service-order/runtime/logs/info/*
+    - /data/www/service-pay/runtime/logs/error/*
+    - /data/www/service-pay/runtime/logs/info/*
+    - /data/www/service-product/runtime/logs/error/*
+    - /data/www/service-product/runtime/logs/info/*
+    - /data/www/service-qrcode/runtime/logs/error/*
+    - /data/www/service-qrcode/runtime/logs/info/*
+    - /data/www/service-shop/runtime/logs/error/*
+    - /data/www/service-shop/runtime/logs/info/*
+  document_type: microopt-test-services
+  multiline.pattern: '^[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}'
+  multiline.negate: true
+  multiline.match: after
+  multiline.max_lines: 50000
+
+
+- input_type: log
+  paths:
+    - /data/www/service-base/runtime/logs/trace/*
+    - /data/www/service-merchant/runtime/logs/trace/*
+    - /data/www/service-message/runtime/logs/trace/*
+    - /data/www/service-shop/runtime/logs/trace/*
+    - /data/www/service-order/runtime/logs/trace/*
+    - /data/www/service-pay/runtime/logs/trace/*
+    - /data/www/service-product/runtime/logs/trace/*
+    - /data/www/service-qrcode/runtime/logs/trace/*
+    - /data/www/service-shop/runtime/logs/trace/*
+  document_type: zipkin-test-services
+  multiline.pattern: '^[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}'
+  multiline.negate: true
+  multiline.match: after
+  multiline.max_lines: 50000
+
+- input_type: log
+  paths:
+    - /data/www/service-base/runtime/logs/datacenter/*
+    - /data/www/service-merchant/runtime/logs/datacenter/*
+    - /data/www/service-message/runtime/logs/datacenter/*
+    - /data/www/service-shop/runtime/logs/datacenter/*
+    - /data/www/service-order/runtime/logs/datacenter/*
+    - /data/www/service-pay/runtime/logs/datacenter/*
+    - /data/www/service-product/runtime/logs/datacenter/*
+    - /data/www/service-qrcode/runtime/logs/datacenter/*
+    - /data/www/service-shop/runtime/logs/datacenter/*
+  document_type: opt-service-datacenter
+  multiline.pattern: '^[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}'
+  multiline.negate: true
+  multiline.match: after
+  multiline.max_lines: 50000
+
+
+output.redis:
+  hosts: ["10.100.100.131:6379"]
+  #默认用这个
+  key: "opt-test"
+  #keys:
+  #  - key: "%{[type]}"
+
+#output.logstash:
+  #hosts: ["localhost:5044"]
+#output.console:
+  #pretty: true

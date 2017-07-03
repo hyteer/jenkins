@@ -1,0 +1,8 @@
+ServiceName:
+  image: "reg.ci.snsshop.net/opt/test/_service-repos:_tag"
+  networks:
+    - opt-net
+  volumes:
+    - "/data/opt/test/_service-repos/logs:/data/www/runtime/logs"
+  extra_hosts:
+    - "imgcaches.vikduo.com:10.100.100.35"

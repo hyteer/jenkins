@@ -1,0 +1,107 @@
+{
+  "datacenter": "opt-test",
+  "data_dir": "/tmp/consul",
+  "log_level": "INFO",
+  "node_name": "opt-services",
+  "server": true,
+"services": [
+        {
+                "id": "Base0",
+                "name": "Base",
+                "tags": ["Test"],
+                "address": "Base",
+                "port": 9091
+        },
+        {
+                "id": "Merchant0",
+                "name": "Merchant",
+                "tags": ["Test"],
+                "address": "Merchant",
+                "port": 9092
+        },
+        {
+                "id": "Message0",
+                "name": "Message",
+                "tags": ["Test"],
+                "address": "Message",
+                "port": 9093
+        },
+        {
+                "id": "Order0",
+                "name": "Order",
+                "tags": ["Test"],
+                "address": "Order",
+                "port": 9094
+        },
+        {
+                "id": "Pay0",
+                "name": "Pay",
+                "tags": ["Test"],
+                "address": "Pay",
+                "port": 9095
+        },
+        {
+                "id": "Product0",
+                "name": "Product",
+                "tags": ["Test"],
+                "address": "Product",
+                "port": 9096
+        },
+        {
+                "id": "Qrcode0",
+                "name": "Qrcode",
+                "tags": ["Test"],
+                "address": "Qrcode",
+                "port": 9097
+        },
+        {
+                "id": "Shop0",
+                "name": "Shop",
+                "tags": ["Test"],
+                "address": "Shop",
+                "port": 9098
+        },
+        {
+                "id": "ShoppingCart0",
+                "name": "ShoppingCart",
+                "tags": ["Test"],
+                "address": "ShoppingCart",
+                "port": 9099
+        },
+        {
+                "id": "Sms0",
+                "name": "Sms",
+                "tags": ["Test"],
+                "address": "Sms",
+                "port": 9100
+        },
+        {
+                "id": "Statistics0",
+                "name": "Statistics",
+                "tags": ["Test"],
+                "address": "Statistics",
+                "port": 9101
+        },
+        {
+                "id": "ThirdParty0",
+                "name": "ThirdParty",
+                "tags": ["Test"],
+                "address": "ThirdParty",
+                "port": 9102
+        },
+        {
+                "id": "ThirdPartyInterface0",
+                "name": "ThirdPartyInterface",
+                "tags": ["Test"],
+                "address": "ThirdPartyInterface",
+                "port": 9103
+        },
+        {
+                "id": "Users0",
+                "name": "Users",
+                "tags": ["Test"],
+                "address": "Users",
+                "port": 9104
+        }
+]
+}

@@ -1,0 +1,63 @@
+{
+   "alidev" : {
+      "appid" : "2017030706088836",
+      "private_key" : "MIICWwIBAAKBgQDT4srv1WwNRNgGQD5og9hbBKKU/eenMh8vK/4w2jzrTaHEL52UlwmnHaalIq0iYnOQqyHOX1kf2K33xiSPEOg88qYC8rgi5dvWNHgnvOtIgo8z3rMDjYHHID/bkfHH3USB8KoINYUQP43tNNcTJd3e+iwY2dlnDeoT1vp828BTAQIDAQABAoGAHfKtOk7REeMMIX4NFBqmht7V1/c3OdOEwtcV+3OtLpjvZ1pPjIP4kk1Hk4meLQD7UpRNl+y0HSM0G5Q+8JW0LT9B3J7Oen8CTOHuh8te8hG3wXFVXF0oOWSXCFxbfBHzYTWF4ARUUmf29pZrUOGbAv8GCYE4BBAwAVPNkrXSSn0CQQDxOxBy2ESPyrEU6EBEPh1BXrdgsu3LdX/flY4FmE7w5b5Q69m1v1Q8piTuHiD0K5O93RXrnmsNCTjUkLI9jLNnAkEA4NvKti2aQNHjJdMDlK4Dd4c73/NhYr1qTR4hWJ4cRcpgqMALyBawpQpeTlpWPdwQbGVT0QgRzaNEM1VMY7/tVwJAKfRByhd+5Rs1bRNvie7bm7DjZ7f2z3niAXq7NpHkuNTcIqrCNG/QMLQcnCU1SgICMfUviMkGiT/fWGjJ9xZvZQJAQY2SIV5WFAOcdxB3gMbiV9xjBj0L7R9PeEAKdK1TjL0dRNUIGkMTKGpHaAxKDCq11wQLVWtG1W59mYGKjaIMbQJABVhGZkA2U2yr7gciKwAhRz1kx94QVwYpkPFe308pAXUT7ilvKId/8/xIMNiHAhv7EqOCYbrxmuFYmTk6n6thrw=="
+   },
+   "auth_redis" : {
+      "hostname" : "10.100.100.108",
+      "port" : 7000,
+      "pwd" : ""
+   },
+   "consul" : {
+      "addr" : "consul:8500",
+      "tag" : "Development"
+   },
+   "cors" : {
+      "allowedorigins" : [ "*" ],
+      "cookiedomain" : ".mopt.snsshop.net"
+   },
+   "docker" : {
+      "enable" : true
+   },
+   "qrcode_redis" : {
+      "hostname" : "10.100.100.108",
+      "port" : 7700,
+      "pwd" : ""
+   },
+   "grayscale_redis" : {
+      "hostname" : "10.100.100.35",
+      "port" : 6381,
+      "pwd" : ""
+   },
+   "redis" : {
+      "hostname" : "10.100.100.108",
+      "port" : 7400,
+      "pwd" : ""
+   },
+   "svr_list" : [ 0 ],
+   "tls" : {
+      "cert_file" : "mycert.cert",
+      "enable" : false,
+      "key_file" : "mykey.key"
+   },
+   "url" : {
+      "callback_url" : "http://paydev.mopt.snsshop.net/mgw/",
+      "gateway_user" : "http://paydev.mopt.snsshop.net/mgw",
+      "h5_url" : "http://paydev.mopt.snsshop.net",
+      "notify_url" : "http://paydev.mopt.snsshop.net/mgw/pay/order-notice"
+   },
+   "wxdev" : {
+      "appid" : "wx4e9ee8a65ee30378",
+      "componentappid" : "wx7503675042fa936a",
+      "componentappsecret" : "27e4f304a7c728ff4d165aefbb863b32",
+      "componenttoken" : "sdlkfjlkdsjfsdfjl",
+      "encodingaeskey" : "wx6788a73ef2f8c5a1wx6788a73ef2f8c5a1aaaaaaa"
+   },
+   "applet" : {
+      "appid" : "wx7c04268b76fc33c9",
+      "appsecret" : "6f0e65df9d2cde21c53a12c06c325308"
+   },
+   "zipkin_kafka" : {
+      "addr" : "10.100.100.69:9092"
+   }
+}

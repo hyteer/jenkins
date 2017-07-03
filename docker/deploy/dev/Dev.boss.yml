@@ -1,0 +1,20 @@
+version: '3'
+services:
+  Agent:
+    image: "reg.ci.snsshop.net/opt/dev/agent:debug"
+    networks:
+      - opt-net
+  BaseBoss:
+    image: "reg.ci.snsshop.net/opt/dev/baseboss:debug"
+    networks:
+      - opt-net
+  DataCenter:
+    image: "reg.ci.snsshop.net/opt/dev/datacenter:debug"
+    networks:
+      - opt-net
+  WebAdmin:
+    image: "reg.ci.snsshop.net/opt/dev/webadmin:debug"
+    networks:
+      - opt-net
+networks:
+  opt-net:

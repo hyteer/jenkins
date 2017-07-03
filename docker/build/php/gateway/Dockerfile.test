@@ -1,0 +1,10 @@
+FROM reg.ci.snsshop.net/opt/gateway-alpine:20170614
+ENV SRC_PATH="/data/www"
+ADD source ${SRC_PATH}
+WORKDIR ${SRC_PATH}
+RUN set -ex \
+    && pwd && ls \
+    && php init --env=Test --overwrite=All \
+    && sed -i 's/127.0.0.1:8500/consul:8500/g' config/global.php \
+    && chown -R www-data:www-data runtime
+CMD /var/www/html/run.sh

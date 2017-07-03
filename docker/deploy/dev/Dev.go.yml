@@ -1,0 +1,20 @@
+version: '3'
+services:
+  go-gateway:
+    image: "reg.ci.snsshop.net/opt/dev/go-gateway:001"
+    ports:
+      - "8080:8080"
+    networks:
+      - opt-net
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  go-mch-gateway:
+    image: "reg.ci.snsshop.net/opt/dev/go-mch-gateway:001"
+    ports:
+      - "9090:9090"
+    networks:
+      - opt-net
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+networks:
+  opt-net:

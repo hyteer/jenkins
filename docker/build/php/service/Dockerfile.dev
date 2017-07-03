@@ -1,0 +1,9 @@
+FROM reg.ci.snsshop.net/opt/service-alpine:20170615
+ENV SRC_PATH="/data/www"
+ADD source ${SRC_PATH}
+WORKDIR ${SRC_PATH}
+RUN set -ex \
+    && pwd && ls \
+    && php init --env=Development --overwrite=All \
+    && sed -i 's/127.0.0.1:8500/consul:8500/g' config/global.php \
+    && cd runtime && mkdir -p debug info logs

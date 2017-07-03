@@ -1,0 +1,14 @@
+version: '3'
+services:
+  filebeat:
+    image: "reg.ci.snsshop.net/opt/dev/filebeat:001"
+    networks:
+      - opt-net
+    environment:
+      - LOGSPOUT=ignore
+    deploy:
+      mode: global
+    volumes:
+      - "/data/opt/dev:/data/opt"
+networks:
+  opt-net:

@@ -1,0 +1,101 @@
+version: '3'
+services:
+# Services
+  Base:
+    image: "reg.ci.snsshop.net/opt/dev/service-base:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-base/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Qrcode:
+    image: "reg.ci.snsshop.net/opt/dev/service-qrcode:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-qrcode/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Order:
+    image: "reg.ci.snsshop.net/opt/dev/service-order:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-order/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Pay:
+    image: "reg.ci.snsshop.net/opt/dev/service-pay:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-pay/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Product:
+    image: "reg.ci.snsshop.net/opt/dev/service-product:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-product/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Shop:
+    image: "reg.ci.snsshop.net/opt/dev/service-shop:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-shop/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  ThirdParty:
+    image: "reg.ci.snsshop.net/opt/dev/service-third-party:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-third-party/logs:/data/www/runtime/logs"
+  ThirdPartyInterface:
+    image: "reg.ci.snsshop.net/opt/dev/service-third-party-interface:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-third-party-interface/logs:/data/www/runtime/logs"
+  Message:
+    image: "reg.ci.snsshop.net/opt/dev/service-message:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-message/logs:/data/www/runtime/logs"
+  Merchant:
+    image: "reg.ci.snsshop.net/opt/dev/service-merchant:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-merchant/logs:/data/www/runtime/logs"
+  gateway-app-merchant:
+    image: "reg.ci.snsshop.net/opt/dev/gateway-app-merchant:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/gateway-app-merchant/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  gateway-app-salesman:
+    image: "reg.ci.snsshop.net/opt/dev/gateway-app-salesman:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/gateway-app-salesman//logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  gateway-boss:
+    image: "reg.ci.snsshop.net/opt/dev/gateway-boss:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/gateway-boss/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+networks:
+  opt-net:

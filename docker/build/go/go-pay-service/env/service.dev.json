@@ -1,0 +1,36 @@
+{
+  "consul" : {
+    "addr" : "consul:8500",
+    "tag" : "Development"
+  },
+  "redis" : {
+    "hostname" : "10.100.100.108",
+    "port" : 7900,
+    "pwd" : ""
+  },
+  "svr_list" : [ 0 ],
+  "zipkin_kafka" : {
+    "addr" : "10.100.100.69:9092"
+  },
+  "applet" : {
+    "appid" : "wx7c04268b76fc33c9",
+    "appsecret" : "6f0e65df9d2cde21c53a12c06c325308"
+  },
+  "mysql_master" : {
+    "host" : "10.100.100.107",
+    "port" : 3306,
+    "dbname" : "prime_pay",
+    "username" : "prime_pay",
+    "password" : "urGUNdId21h8WuepxSkLOWHvCUxgsDVR"
+  },
+  "mysql_slaves": {
+    "host" : ["10.100.100.107"],
+    "port" : 3306,
+    "dbname" : "prime_pay",
+    "username" : "prime_pay",
+    "password" : "urGUNdId21h8WuepxSkLOWHvCUxgsDVR"
+  },
+  "docker" : {
+      "enable" : true
+   }
+}

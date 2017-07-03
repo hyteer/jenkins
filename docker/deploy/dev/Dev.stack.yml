@@ -1,0 +1,145 @@
+version: '3'
+services:
+  go-gateway:
+    image: "reg.ci.snsshop.net/opt/test/go-gateway:_version"
+    ports:
+      - "8080:8080"
+    networks:
+      - opt-net
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  go-mch-gateway:
+    image: "reg.ci.snsshop.net/opt/test/go-mch-gateway:_version"
+    ports:
+      - "8081:8081"
+    networks:
+      - opt-net
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  consul:
+    image: "reg.ci.snsshop.net/opt/test/consul:_version"
+    networks:
+      - opt-net
+  filebeat:
+    image: "reg.ci.snsshop.net/opt/test/filebeat:_version"
+    networks:
+      - opt-net
+    #environment:
+    #  - LOGSPOUT=ignore
+    deploy:
+      mode: global
+    volumes:
+      - "/data/opt/test:/data/opt"
+# Services
+  Base:
+    image: "reg.ci.snsshop.net/opt/test/service-base:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-base/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Qrcode:
+    image: "reg.ci.snsshop.net/opt/test/service-qrcode:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-qrcode/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Order:
+    image: "reg.ci.snsshop.net/opt/test/service-order:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-order/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Pay:
+    image: "reg.ci.snsshop.net/opt/test/service-pay:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-pay/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Product:
+    image: "reg.ci.snsshop.net/opt/test/service-product:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-product/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Shop:
+    image: "reg.ci.snsshop.net/opt/test/service-shop:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-shop/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  ThirdParty:
+    image: "reg.ci.snsshop.net/opt/test/service-third-party:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-third-party/logs:/data/www/runtime/logs"
+  ThirdPartyInterface:
+    image: "reg.ci.snsshop.net/opt/test/service-third-party-interface:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-third-party-interface/logs:/data/www/runtime/logs"
+  Message:
+    image: "reg.ci.snsshop.net/opt/test/service-message:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-message/logs:/data/www/runtime/logs"
+  Merchant:
+    image: "reg.ci.snsshop.net/opt/test/service-merchant:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/service-merchant/logs:/data/www/runtime/logs"
+  gateway-app-merchant:
+    image: "reg.ci.snsshop.net/opt/test/gateway-app-merchant:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/gateway-app-merchant/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  gateway-app-salesman:
+    image: "reg.ci.snsshop.net/opt/test/gateway-app-salesman:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/gateway-app-salesman//logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  gateway-boss:
+    image: "reg.ci.snsshop.net/opt/test/gateway-boss:_version"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/test/gateway-boss/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  # boss
+# nginx
+  nginx:
+    image: "reg.ci.snsshop.net/opt/test/nginx:_version"
+    ports:
+      - "80:80"
+    networks:
+      - opt-net
+    depends_on:
+      - gate-go
+      - gateway-app-merchant
+      - gateway-app-salesman
+      - gateway-boss
+    #command: /scripts/wait-for-it.sh gate-go:8301 -- /scripts/start.sh
+networks:
+  opt-net:

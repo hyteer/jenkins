@@ -1,0 +1,100 @@
+version: '2'
+services:
+  go-gateway:
+    image: "reg.ci.snsshop.net/opt/dev/go-gateway:001"
+    ports:
+      - "8080:8080"
+    networks:
+      - opt-net
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  go-mch-gateway:
+    image: "reg.ci.snsshop.net/opt/dev/go-mch-gateway:001"
+    ports:
+      - "9090:9090"
+    networks:
+      - opt-net
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  consul:
+    image: "reg.ci.snsshop.net/opt/dev/consul:001"
+    networks:
+      - opt-net
+  filebeat:
+    image: "reg.ci.snsshop.net/opt/dev/filebeat:001"
+    networks:
+      - opt-net
+    environment:
+      - LOGSPOUT=ignore
+    deploy:
+      mode: global
+    volumes:
+      - "/data/opt/dev:/data/opt"
+  frontend-pc-merchant:
+    image: "reg.ci.snsshop.net/opt/dev/frontend-pc-merchant:001"
+    networks:
+      - opt-net
+  frontend-h5-rest-shop:
+    image: "reg.ci.snsshop.net/opt/dev/frontend-h5-rest-shop:001"
+    networks:
+      - opt-net
+# Services
+  Base:
+    image: "reg.ci.snsshop.net/opt/dev/service-base:001"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-base/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  Qrcode:
+    image: "reg.ci.snsshop.net/opt/dev/service-qrcode:001"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-qrcode/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  ThirdPartyInterface:
+    image: "reg.ci.snsshop.net/opt/dev/service-third-party-interface:001"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/service-third-party-interface/logs:/data/www/runtime/logs"
+  gateway-app-merchant:
+    image: "reg.ci.snsshop.net/opt/dev/gateway-app-merchant:001"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/gateway-app-merchant/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  gateway-app-salesman:
+    image: "reg.ci.snsshop.net/opt/dev/gateway-app-salesman:001"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/gateway-app-salesman/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  gateway-boss:
+    image: "reg.ci.snsshop.net/opt/dev/gateway-boss:001"
+    networks:
+      - opt-net
+    volumes:
+      - "/data/opt/dev/gateway-boss/logs:/data/www/runtime/logs"
+    extra_hosts:
+      - "imgcaches.vikduo.com:10.100.100.35"
+  nginx:
+    image: "reg.ci.snsshop.net/opt/dev/nginx:001"
+    ports:
+      - "80:80"
+    networks:
+      - opt-net
+    depends_on:
+      - go-gateway
+      - gateway-app-merchant
+      - gateway-app-salesman
+      - gateway-boss
+networks:
+  opt-net:

@@ -1,0 +1,8 @@
+version: '3'
+services:
+  frontend-pc-merchant:
+    image: "reg.ci.snsshop.net/opt/dev/frontend-pc-merchant:debug"
+    networks:
+      - opt-net
+networks:
+  opt-net:

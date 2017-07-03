@@ -1,0 +1,86 @@
+filebeat.prospectors:
+
+- input_type: log
+  paths:
+    - /data/opt/service-base/logs/error/*
+    - /data/opt/service-base/logs/info/*
+    - /data/opt/service-order/logs/error/*
+    - /data/opt/service-order/logs/info/*
+    - /data/opt/service-qrcode/logs/error/*
+    - /data/opt/service-qrcode/logs/info/*
+    - /data/opt/service-pay/logs/error/*
+    - /data/opt/service-pay/logs/info/*
+    - /data/opt/service-product/logs/error/*
+    - /data/opt/service-product/logs/info/*
+    - /data/opt/service-shop/logs/error/*
+    - /data/opt/service-shop/logs/info/*
+    - /data/opt/service-third-party/logs/error/*
+    - /data/opt/service-third-party/logs/info/*
+    - /data/opt/service-third-party-interface/logs/error/*
+    - /data/opt/service-third-party-interface/logs/info/*
+    - /data/opt/service-message/logs/error/*
+    - /data/opt/service-message/logs/info/*
+    - /data/opt/service-merchant/logs/error/*
+    - /data/opt/service-merchant/logs/info/*
+    - /data/opt/gateway-boss/logs/error/*
+    - /data/opt/gateway-boss/logs/info/*
+    - /data/opt/gateway-app-merchant/logs/error/*
+    - /data/opt/gateway-app-merchant/logs/info/*
+    - /data/opt/gateway-app-salesman/logs/error/*
+    - /data/opt/gateway-app-salesman/logs/info/*
+  document_type: microopt-docker-gray-services
+  multiline.pattern: '^[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}'
+  multiline.negate: true
+  multiline.match: after
+  multiline.max_lines: 50000
+
+
+- input_type: log
+  paths:
+    - /data/opt/service-base/logs/trace/*
+    - /data/opt/service-order/logs/trace/*
+    - /data/opt/service-qrcode/logs/trace/*
+    - /data/opt/service-pay/logs/trace/*
+    - /data/opt/service-product/logs/trace/*
+    - /data/opt/service-shop/logs/trace/*
+    - /data/opt/service-third-party/logs/trace/*
+    - /data/opt/service-third-party-interface/logs/trace/*
+    - /data/opt/service-message/logs/trace/*
+    - /data/opt/service-merchant/logs/trace/*
+    - /data/opt/gateway-boss/logs/trace/*
+    - /data/opt/gateway-app-merchant/logs/trace/*
+    - /data/opt/gateway-app-salesman/logs/trace/*
+  document_type: zipkin-docker-gray-services
+  multiline.pattern: '^[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}'
+  multiline.negate: true
+  multiline.match: after
+  multiline.max_lines: 50000
+
+- input_type: log
+  paths:
+    - /data/opt/service-base/logs/datacenter/*
+    - /data/opt/service-order/logs/datacenter/*
+    - /data/opt/service-qrcode/logs/datacenter/*
+    - /data/opt/service-pay/logs/datacenter/*
+    - /data/opt/service-product/logs/datacenter/*
+    - /data/opt/service-shop/logs/datacenter/*
+    - /data/opt/service-third-party/logs/datacenter/*
+    - /data/opt/service-third-party-interface/logs/datacenter/*
+    - /data/opt/service-message/logs/datacenter/*
+    - /data/opt/service-merchant/logs/datacenter/*
+    - /data/opt/gateway-boss/logs/datacenter/*
+    - /data/opt/gateway-app-merchant/logs/datacenter/*
+    - /data/opt/gateway-app-salesman/logs/datacenter/*
+  document_type: opt-docker-gray-service-datacenter
+  multiline.pattern: '^[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}'
+  multiline.negate: true
+  multiline.match: after
+  multiline.max_lines: 50000
+
+
+output.redis:
+  hosts: ["10.100.100.56:6379"]
+  #默认用这个
+  key: "opt-docker-service-gray"
+  #keys:
+  #  - key: "%{[type]}"
